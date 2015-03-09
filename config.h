@@ -1,0 +1,1 @@
+#define SYMTABLE_BITMAP_NO_ICASE
