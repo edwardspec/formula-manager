@@ -1,0 +1,2 @@
+*.l linguist-language=lex
+*.h linguist-language=c
