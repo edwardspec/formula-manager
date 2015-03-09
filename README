@@ -1,2 +1,32 @@
-# formula-manager
-Mathematical library in C (formula parsing, integrals, derivatives, solving equations, etc.)
+Formula Manager.
+
+Mathematical library in C:
+	formula parsing,
+	integrals, derivatives,
+	solving equations, etc.
+
+See formula.h for common stuff (parsing / construction of complex formulas),
+	min1var.h - golden section search,
+	minNvars.h - gradient descent method,
+	rungekutta.h - Runge-Kutta method,
+	integral.h - integral calculation via Simpson's and Trapezoidal rules.
+
+Non-mathematical headers:
+	formula_internal.h, symtable.h - internal (used in formula parsing),
+	mpool.h - memory pool implementation.
+
+Enjoy.
+
+_______________________________________________________________________________
+
+I wrote this in 2010 while studying [Computational science] and [Mathematical
+optimization] at the Obninsk State Technical University (MEPhI Obninsk)
+where I was doing Applied Mathematics.
+
+I used this library in some of the practical tasks we did (see labs directory).
+
+Published in 2015 (accidentally found this library while looking through my
+code archives; surprisingly good stuff...).
+
+--
+Edward Chernenko
