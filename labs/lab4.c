@@ -1,6 +1,6 @@
 /*
 	Mathematical optimization - LAB4.
-	Copyright (C) 2010 Edward Chernenko.
+	Copyright (C) 2010-2015 Edward Chernenko.
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -44,7 +44,8 @@ int main( void )
 	dump(F);
 
 	/*
-		Метод ломаных.
+		Piyavskii's algorithm.
+		(in Russian: метод ломаных).
 	*/
 	double x, m, delta, fA, fB, fX, diff, Mk;
 	double X[STEPS_MAX], M[STEPS_MAX];
