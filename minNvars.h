@@ -1,6 +1,6 @@
 /*
 	Formula manager - the mathematical library.
-	Copyright (C) 2010 Edward Chernenko.
+	Copyright (C) 2010-2015 Edward Chernenko.
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -13,20 +13,18 @@
 	GNU General Public License for more details.
 */
 
+#warning "Not yet implemented"
+
+
 #ifndef _MINNVARS_H
 #define _MINNVARS_H
 
 #include "formula.h"
 
-extern int minNvars_debug; /* Set this to 1 to get debugging output. Default 0 */
-
-/* Find the point of minimum for F(x1, x2, x3...) */
-
 typedef double *point; /* array of double values */
-point newpoint(int N) /* just a malloc */
-	__attribute__((fastcall malloc warn_unused_result nonnull));
 
 /*
+	Gradient descent method.
 	Find the minimum point of F(x1, x2, x3, ...)
 */
 point minify_fastest_down(const formula F, double precision);

@@ -1,6 +1,6 @@
 /*
 	Formula manager - the mathematical library.
-	Copyright (C) 2010 Edward Chernenko.
+	Copyright (C) 2010-2015 Edward Chernenko.
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "min1var.h"
 #include "formula.h"
 
-__attribute__((fastcall)) point newpoint(int N)
+static inline point newpoint(int N)
 {
 	return calloc(sizeof(double), N);
 }
@@ -32,6 +32,8 @@ point minify_fastest_down(const formula F, double precision)
 
 	int N = formula_args(F);
 	point X = newpoint(N);
+
+	/* Not yet implemented */
 
 	return X;
 }
