@@ -18,6 +18,18 @@ Enjoy.
 
 _______________________________________________________________________________
 
+'test_eval' utility:
+	checks how the formula is parsed and calculates its value.
+
+	Example:
+		./test-eval '$[tg(B/4)^A+C]dB|0_3.14' 10 3
+
+	Parses given formula, shows its structure, calculates its value
+	in point A=10, C=3. (Note: B is not an argument because of the
+	definite integral by B in place).
+
+_______________________________________________________________________________
+
 I wrote this in 2010 while studying [Computational science] and [Mathematical
 optimization] at the Obninsk State Technical University (MEPhI Obninsk)
 where I was doing Applied Mathematics.
