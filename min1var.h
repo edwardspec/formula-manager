@@ -1,6 +1,6 @@
 /*
 	Formula manager - the mathematical library.
-	Copyright (C) 2010 Edward Chernenko.
+	Copyright (C) 2010-2015 Edward Chernenko.
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -18,17 +18,25 @@
 
 #include "formula.h"
 
-extern int min1var_debug; /* Set this to 1 to get debugging output. Default 0 */
+/**
+	@brief Flag to enable debugging output from minify_golden_section().
+		Set to 1 to enable (default 0).
+*/
+extern int min1var_debug;
 
-/* Find the point of minimum for F(x) */
+/**
+	@brief Find the point of minimum for F(X) in [a; b] range
+	@param F Formula object.
+	@param a Starting point of [a; b] range.
+	@param b Ending point of [a; b] range. Can be INFINITY (see below).
+	@param precision Needed precision (e.g. 0.05).
+	@param ... The step to determine maximum b. Only needed if b=INFINITY.
+		Must be of type double (e.g. "9.", not "9").
+	@returns The value of X (within [a; b]) where F(X) is the smallest.
 
-/*
-	NOTE: b can be INFINITY, then this function takes one more
-	argument of type double, the step to determine maximum b.
-
-	E.g.,
+	@example
 		minify_golden_section(F, 5, 88, 0.2);
-		minify_golden_section(F, 5, INFINITY, 0.2, 100);
+		minify_golden_section(F, 5, INFINITY, 0.2, 100.);
 */
 double minify_golden_section(const formula F, double a, double b, double precision, ...)
 	__attribute__((nonnull(1,4) warn_unused_result));
