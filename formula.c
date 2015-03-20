@@ -298,37 +298,35 @@ formula formula_clone(const formula F)
 static void _dump(const formula F, int howdeep)
 {
 	int i;
-//	if(F)
-	{
-		for(i = 0; i < howdeep; i ++) printf("\t");
-		printf("action %i [%s]: ", F->action, ACTION_DESCRIPTION(F->action));
-		if(F->action == F_VAR)
-		{
-			char *vn = symtable_varname(F);
-			printf(" <%s>\n", vn ? vn : "?");
-			if(vn) free(vn);
-		}
-		else if(F->action == F_CONST)
-			printf("%.2f\n", _get_const(F));
-		else
-		{
-			char *vars_dump = symtable_print(F->vars);
-			if(vars_dump)
-			{
-				printf("%s", vars_dump);
-				free(vars_dump);
-			}
 
-			printf("\n");
-			_dump(F->arg1, howdeep + 1);
-			if(F->arg2) _dump(F->arg2, howdeep + 1);
-			if(F->other_args)
+	for(i = 0; i < howdeep; i ++) printf("\t");
+	printf("action %i [%s]: ", F->action, ACTION_DESCRIPTION(F->action));
+	if(F->action == F_VAR)
+	{
+		char *vn = symtable_varname(F);
+		printf(" <%s>\n", vn ? vn : "?");
+		if(vn) free(vn);
+	}
+	else if(F->action == F_CONST)
+		printf("%.2f\n", _get_const(F));
+	else
+	{
+		char *vars_dump = symtable_print(F->vars);
+		if(vars_dump)
+		{
+			printf("%s", vars_dump);
+			free(vars_dump);
+		}
+
+		printf("\n");
+		_dump(F->arg1, howdeep + 1);
+		if(F->arg2) _dump(F->arg2, howdeep + 1);
+		if(F->other_args)
+		{
+			_dump(F->other_args->arg[0], howdeep + 1);
+			if(F->other_args->count > 1)
 			{
-				_dump(F->other_args->arg[0], howdeep + 1);
-				if(F->other_args->count > 1)
-				{
-					_dump(F->other_args->arg[1], howdeep + 1);
-				}
+				_dump(F->other_args->arg[1], howdeep + 1);
 			}
 		}
 	}
@@ -425,12 +423,13 @@ __attribute__((fastcall)) static double _eval(const formula F, const double *arg
 double eval(const formula F, ...)
 {
 	double *args = NULL;
- 	int count, i;
+ 	int count;
 	if(!F) return NAN;
 
 	count = symtable_count(F->vars);
 	if(count)
 	{
+		int i;
 		args = malloc(sizeof(double) * count);
 		if(!args) return NAN;
 
@@ -495,10 +494,10 @@ __attribute__((fastcall)) static double _simpson_eval(formula F, const double *a
 
 //	printf("Integral by variable %s! №%i in args\n", variable, var_order_in_args);
 
-	int swap = 1; int t;
+	int swap = 1;
 	if(a > b)
 	{
-		t = a;
+		int t = a;
 		a = b;
 		b = t;
 		swap = -1;

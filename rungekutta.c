@@ -25,13 +25,15 @@ formula rungekutta_solve(formula F, double X0, double Y0)
 	const float step = STEP;
 	const float step_div_2 = step / 2;
 
-	double x = X0, y = Y0, y_temp, y_next;
+	double x = X0, y = Y0;
 	formula top = parse("0");
 
 	int i = 1; int factorial = 1;
 //	printf("%8s %15s %15s\n", "n", "Xi", "Y^(n)(Xi)");
 	do
 	{
+		double y_temp, y_next;
+
 		y_temp = y + step_div_2 * eval(F, x, y);
 		y_next = y + step * eval(F, x + step_div_2, y_temp);
 

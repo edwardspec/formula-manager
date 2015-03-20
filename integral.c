@@ -31,10 +31,10 @@ double simpson(formula F, int steps, double a, double b)
 {
 	if(!F || !steps) return NAN;
 
-	int swap = 1; int t;
+	int swap = 1;
 	if(a > b)
 	{
-		t = a;
+		int t = a;
 		a = b;
 		b = t;
 		swap = -1;
@@ -73,10 +73,10 @@ double trap(formula F, int steps, double a, double b)
 {
 	if(!F || !steps) return NAN;
 
-	int swap = 1; int t;
+	int swap = 1;
 	if(a > b)
 	{
-		t = a;
+		int t = a;
 		a = b;
 		b = t;
 		swap = -1;
