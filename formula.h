@@ -132,12 +132,12 @@ void dump(const formula F) __attribute__((nonnull));
 	@example
 		Suppose we have
 			F1(X)=sin(X),
-			F2(X,Y)=Y**2-X,
+			F2(X,Y)=Y^2-X,
 		and we call
 			upgrade(F_ADD, &F1, &F2);
 		After this call:
 			F2 will be NULL
-			F1 will be F1(X,Y)=sin(X)+Y**2-X
+			F1 will be F1(X,Y)=sin(X)+Y^2-X
 */
 void upgrade(int action, ...); /* upgrade(F_ADD, &F1, &F2); // - the result is in F1, F2 becomes NULL */
 
