@@ -333,13 +333,20 @@ static void _dump(const formula F, int howdeep)
 		}
 	}
 }
+
 void dump(const formula F)
 {
-	if(F) _dump(F, 1);
+	if(F) {
+		int vars_count;
 
-	int vars_count = symtable_count(F->vars);
-	printf("Dump ok! %i var%s found.\n", vars_count, vars_count == 1 ? "" : "s");
+		_dump(F, 1);
+
+		vars_count = symtable_count(F->vars);
+		printf("Dump ok! %i var%s found.\n", vars_count,
+			vars_count == 1 ? "" : "s");
+	}
 }
+
 static void _formula_free(formula F)
 {
 	symtable_free(F->vars);
@@ -671,6 +678,8 @@ static void _reduce(formula F, const char *var, double val)
 }
 void reduce(formula F, const char *var, double val)
 {
-	if(F) _reduce(F, var, val);
-	symtable_del(F->args, var);
+	if(F) {
+		_reduce(F, var, val);
+		symtable_del(F->args, var);
+	}
 }
