@@ -59,7 +59,7 @@ const INTTYPE FULLMASK = (INTTYPE) -1;
 	all functions that will be called very often.
 
 	Only symtable_add() has this kind of check. It's being
-	involked only when compiling a formula via parse().
+	invoked only when compiling a formula via parse().
 */
 static inline struct _symtable construct_mask(char c)
 {
